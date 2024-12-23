@@ -1,0 +1,66 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"> -->
+
+        <title>Heart Animation</title>
+        <link rel="stylesheet" href="{% static 'css/step_1.css' %}">
+        
+    </head>
+    <body>
+        <div class="pc-background">
+            <!-- PC에서만 보이는 흰색 배경 -->
+        </div>
+        <div class="container">
+            <p class="main_text">
+                카테고리 고르기
+            </p>
+            <p class="context1">
+                <span>뭐라무라 ...뭐라..뭐라..뭐라고??</span><br />
+                <span>카테고리를 골라보세요!</span>
+            
+            </p>
+            <form action="{% url 'select_type' %}" method="get" id="select_mode"></form>
+                <div class="category_area">
+                    <ul class="category_ele">
+                        <li>
+                            <button type="submit" name="select_mode" value="luck">최고로 강력한 행운 🍀</button>
+                        </li>
+                        <li>
+                            <button type="submit" name="select_mode" value="love">모든 사랑에 대하여 💕</button>
+                        </li>
+                        <li>
+                            <button type="submit" name="select_mode" value="switchjob">안녕히계세요 여러분 저는 .. 🧚‍♀️</button>
+                        </li>
+                        <li>
+                            <button type="submit" name="select_mode" value="pass">어디든 딱 합격하길 🧑‍🏫</button>
+                        </li>
+                        <li>
+                            <button type="submit" name="select_mode" value="money">부자되세요! 💵</button>
+                        </li>
+                        <li>
+                            <button type="submit" name="select_mode" value="health">건강이 최고야.. 💪</button>
+                        </li>
+                        <li>
+                            <button type="submit" name="select_mode" value="mycat">울냥이에게 애옹 😻</button>
+                        </li>
+                        <li>
+                            <button type="submit" name="select_mode" value="mydog">울멍멍이에게 멍몽멍 🐶</button>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $("button[name=select_mode]").click(function () {
+                        $("button[name=select_mode]").value.submit();
+            
+                    });
+                });
+            </script>
+        </div>
+    </body>
+</html>

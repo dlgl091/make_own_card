@@ -1,0 +1,35 @@
+테이블
+1. TempleteCard : 부적 템플릿 이미지 저장용 테이블
+- CardNo : 기본키, 숫자 형식
+- CardName
+- Category : 건강 / 돈 / 행운 / 행복 / 직업 / 기타 >>>>> varchar
+- ImgLink
+- regDate
+
+2. GeneratedCard : 부적 생성 결과 이미지 저장용 테이블
+- genNo : 생성 인덱스, 기본키
+- Category 
+- ImgLink
+- CardNo : 외래키
+- Text : 부적 문구
+- genDate
+
+
+==============================
+
+CREATE TABLE templateCard (
+	cardNo int primary key,
+    cardName VARCHAR(20) NOT NULL,     -- 부적 이름
+    category VARCHAR(10) NOT NULL,   
+    imgLink VARCHAR(200) UNIQUE,          -- 이미지링크 (유일값)
+    regDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- 생성 시간
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE generatedCard (
+	genNo INT AUTO_INCREMENT primary key,
+    cardNo INT,
+    category VARCHAR(10) NOT NULL,
+    genImgLink VARCHAR(200) UNIQUE,
+    genDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (cardNo) REFERENCES templateCard(cardNo)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

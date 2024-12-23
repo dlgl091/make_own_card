@@ -1,4 +1,0 @@
-<관리자 계정>
-username : eccho
-email : eunchae296@gmail.com
-password : whdmsco45!

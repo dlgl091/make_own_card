@@ -7,6 +7,7 @@ urlpatterns = [
     path('result', views.result, name = 'result'),
     path('step2', views.step_2, name = 'step_2'),
     path('step1', views.step_1, name = 'step_1'),
-    path('select_type', views.select_type, name = 'select_type'), # 'step1/<str:select_mode>'
+    path('upload/', views.upload_image, name='upload_image'),
+    path('save', views.save_data, name='save_data'),
     #static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 ]

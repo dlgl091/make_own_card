@@ -5,31 +5,123 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"> -->
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+        <script>
+            Kakao.init('f21fe09853ba2ffad9103909c553b0f2'); 
+            Kakao.isInitialized();  
+        </script>
         <title>Heart Animation</title>
-        <link rel="stylesheet" href="{% static 'css/result.css' %}">
+        <link rel="stylesheet" href="{% static 'css/result_2.css' %}">
         
     </head>
     <body>
-        <div class="pc-background">
+        <!-- <div class="pc-background"> -->
             <!-- PC에서만 보이는 흰색 배경 -->
-        </div>
+        <!-- </div> -->
         <div class="container">
-            <main>
-                <div class="result_area" style="position: relative; text-align: center;"></divstyle>
-                    <img class="result_img" src="{% static 'images/result_3.png' %}" alt="결과이미지"/>
-                    <div class="result_img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 24px;">
-                        test<br>
-                        test<br>
-                        test<br>
-                    </div>
+            <div class="entire_area">
+                <div class="content_area">
+                    <p class="main_text">
+                        삐-빅!<br>온 우주의 행운을 담은<br>부적 수신 완료!
+                    </p>
+                    <!-- <form action="{% url 'polls:result' %}" method="post" id="result_img">
+                        {% csrf_token %} -->
+                        <div id="card-ex-img">
+                            <img src="{% static 'images/mydog_1_img.png' %}" alt="예시 이미지">
+
+                                <div class="text-overlay1" id="textOverlay1"></div>
+                                
+                                <div class="text-overlay2" id="textOverlay2"></div>
+
+                        </div>
+                    <!-- </form> -->
+                    <p class="context1">
+                        <span>나만의 부적을</span><br />
+                        <span>다른 사람에게 공유해보세요!</span>
+                    
+                    </p>
                 </div>
-    
-            </main>
+                    
+                <div class="btn_area">
+                    <!--버튼 -->
+                    <button class="next_btn">부적 다운로드</button>
+                    <div class="share_area">
+                        <button type="button" class="kakao_btn">
+                            <img src="{%  static 'images/kakao_3.png' %}" />
+                        </button>
+                        <button type="button" class="insta_btn">
+                            <img src="{%  static 'images/insta_2.png' %}" />
+                        </button>
+                        <button type="button" class="link_btn">
+                            <input type="image" src="{%  static 'images/image_3.png' %}">
+                        </button>
+                    </div>
+                    
+                </div>
+        
+            </div>
             
             
-            <script src="{% static 'js/script.js' %}"></script>
+            
         </div>
+    </body>
+            <script src="{% static 'js/result.js' %}"></script>
+
+        <script>
+            function mobileSize(){
+                var widthSize = window.innerWidth;
+                if (widthSize < 520) {
+                    var heightSize = window.innerHeight;
+                    $("body").css("height",heightSize);
+                }
+                else {
+                    $("body").css("height", 996);
+                }
+                
+            }
+
+            $( document ).ready( function(){
+
+                mobileSize();
+            
+            });
+
+            window.addEventListener("resize", function() {
+
+                mobileSize();
+
+            });
+        </script>
+
+        <script>
+
+
+            // CSRF 토큰 가져오기 함수 (Django 기본 설정)
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+
+            $(document).ready(function(){
+                $("button[class=next_btn]").click(function () {
+                    captureWithBackground();
+        
+                });
+            });
+
+        </script>
+
         
     </body>
 </html>

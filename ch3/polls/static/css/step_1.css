@@ -148,7 +148,7 @@ body {
 }
 
   /* 모바일(가로,세로) 화면 스타일 (480px 이하일 때) */
-  @media (min-width: 376px) and (max-width: 767px) {
+  @media (min-width: 376px) and (max-width: 767px) and (min-height: 800px) {
     html {
       font-size: 18px;
     }
@@ -168,6 +168,7 @@ body {
   
   }
 
+  /* pc화면 */
   @media (min-width: 768px) {
     html {
         font-size: 16px;
@@ -181,3 +182,30 @@ body {
         height: 100%;
     }
   }
+
+/* 가로 긴 모바일 */
+@media (min-width: 500px) and (max-height: 740px) {
+    html {
+        font-size: 18px;
+      }
+    body {
+        height: 896px;
+        
+    }
+    .container {
+        width: 500px;
+        height: 100%;
+    }
+    .btn_area {
+        width: 320px;
+        left: calc(50% - 320px / 2);
+    }
+    #card-ex-img {
+        width: auto;
+
+        left: calc(50% - 46% / 2);
+        
+    
+    
+    }
+}

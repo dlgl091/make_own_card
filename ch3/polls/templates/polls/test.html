@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Text Overlay</title>
+</head>
+<body>
+    <h1>문구 입력 및 이미지 생성</h1>
+    <input type="text" id="userText" placeholder="문구를 입력하세요" />
+    <br><br>
+    <canvas id="imageCanvas" width="800" height="400" style="border:1px solid black;"></canvas>
+    <br><br>
+    <button id="downloadBtn">이미지 다운로드</button>
+    <form method="POST" action="/generate-image/" id="submitForm">
+        <input type="hidden" name="imageData" id="imageData">
+        <button type="submit">이미지 서버로 전송</button>
+    </form>
+
+    <script>
+        const canvas = document.getElementById('imageCanvas');
+        const ctx = canvas.getContext('2d');
+        const input = document.getElementById('userText');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const imageDataInput = document.getElementById('imageData');
+        const submitForm = document.getElementById('submitForm');
+
+        // 기본 배경 이미지 로드
+        const backgroundImage = new Image();
+        backgroundImage.src = 'images/background.png'; // 배경 이미지 경로
+        backgroundImage.onload = () => {
+            ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+        };
+
+        // 입력값이 변경될 때마다 텍스트 업데이트
+        input.addEventListener('input', (e) => {
+            ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height); // 초기화
+            ctx.font = '40px Arial';
+            ctx.fillStyle = 'black';
+            ctx.fillText(e.target.value, 50, 100); // 위치 및 스타일 조정
+        });
+
+        // 캔버스를 이미지로 다운로드
+        downloadBtn.addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.download = 'images/generated-image.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+
+        // 캔버스 데이터를 서버로 전송
+        submitForm.addEventListener('submit', () => {
+            const imageData = canvas.toDataURL('image/png');
+            imageDataInput.value = imageData; // 히든 필드에 저장
+        });
+    </script>
+</body>
+</html>

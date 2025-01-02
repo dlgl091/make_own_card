@@ -26,6 +26,7 @@
                 <p class="main_text3">삐-빅! 외계-외계 기운이 충전 완료!<br>온 우주의 행운이 당신의 부적에 깃듭니다!</p>
 
                 <button type="button" class="main_btn">
+                    
                     <img src="{% static 'images/main_btn.png' %}" alt="부적 만들러가기 버튼"/>
                     <span class="imtext">부적 만들러가기</span>
                 </button>
@@ -45,6 +46,12 @@
                 <img src="{% static 'images/heart.png' %}">
             </div> -->
             <script src="{% static 'js/script.js' %}"></script>
+            <script>
+                document.getElementsByClassName("main_btn")[0].addEventListener("click", function() {
+                    window.location.href = "{% url 'polls:step_1' %}";
+                });
+
+            </script>
         </div>
         
     </body>

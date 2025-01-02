@@ -8,7 +8,7 @@
 
         <title>Heart Animation</title>
         <link rel="stylesheet" href="{% static 'css/step_1.css' %}">
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <div class="pc-background">
@@ -23,40 +23,40 @@
                 <span>카테고리를 골라보세요!</span>
             
             </p>
-            <form action="{% url 'select_type' %}" method="get" id="select_mode"></form>
+            <form action="{% url 'polls:step_2' %}" method="get" id="mode">
                 <div class="category_area">
                     <ul class="category_ele">
                         <li>
-                            <button type="submit" name="select_mode" value="luck">최고로 강력한 행운 🍀</button>
+                            <button type="submit" name="mode" value="luck">최고로 강력한 행운 🍀</button>
                         </li>
                         <li>
-                            <button type="submit" name="select_mode" value="love">모든 사랑에 대하여 💕</button>
+                            <button type="submit" name="mode" value="love">모든 사랑에 대하여 💕</button>
                         </li>
                         <li>
-                            <button type="submit" name="select_mode" value="switchjob">안녕히계세요 여러분 저는 .. 🧚‍♀️</button>
+                            <button type="submit" name="mode" value="switchJob">안녕히계세요 여러분 저는 .. 🧚‍♀️</button>
                         </li>
                         <li>
-                            <button type="submit" name="select_mode" value="pass">어디든 딱 합격하길 🧑‍🏫</button>
+                            <button type="submit" name="mode" value="pass">어디든 딱 합격하길 🧑‍🏫</button>
                         </li>
                         <li>
-                            <button type="submit" name="select_mode" value="money">부자되세요! 💵</button>
+                            <button type="submit" name="mode" value="money">부자되세요! 💵</button>
                         </li>
                         <li>
-                            <button type="submit" name="select_mode" value="health">건강이 최고야.. 💪</button>
+                            <button type="submit" name="mode" value="health">건강이 최고야.. 💪</button>
                         </li>
                         <li>
-                            <button type="submit" name="select_mode" value="mycat">울냥이에게 애옹 😻</button>
+                            <button type="submit" name="mode" value="myCat">울냥이에게 애옹 😻</button>
                         </li>
                         <li>
-                            <button type="submit" name="select_mode" value="mydog">울멍멍이에게 멍몽멍 🐶</button>
+                            <button type="submit" name="mode" value="myDog">울멍멍이에게 멍몽멍 🐶</button>
                         </li>
                     </ul>
                 </div>
             </form>
             <script type="text/javascript">
                 $(document).ready(function(){
-                    $("button[name=select_mode]").click(function () {
-                        $("button[name=select_mode]").value.submit();
+                    $("button[name=mode]").click(function () {
+                        $(this).val().submit();
             
                     });
                 });
